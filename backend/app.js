@@ -67,8 +67,8 @@ const validateRequest = (req, res, next) => {
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Public routes
-app.use("/api/auth", authRouter);
-app.use("/api/auth", forgotPasswordRoutes);
+app.use("/api/v1", authRouter);
+app.use("/api/v1", forgotPasswordRoutes);
 app.use("/api/v1/events", eventRouter);
 
 // Protected routes
