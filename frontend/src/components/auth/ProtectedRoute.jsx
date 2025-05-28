@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import Unauthorized from '../../pages/Unauthorized'
 
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     const { user, loading } = useAuth()
@@ -7,13 +8,14 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
+            <div className="flex items-center justify-center min-h-screen bg-gray-900">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
         )
     }
 
     if (!user) {
+        // Redirect to login with return path
         return <Navigate to="/login" state={{ from: location }} replace />
     }
 
@@ -24,7 +26,7 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 
     // Check if user's role is in the allowed roles
     if (!allowedRoles.includes(user.role)) {
-        return <Navigate to="/" replace />
+        return <Unauthorized />
     }
 
     return children
