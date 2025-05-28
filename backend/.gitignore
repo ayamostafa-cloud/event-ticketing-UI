@@ -3,15 +3,7 @@ node_modules/
 /.pnp
 .pnp.js
 
-# Testing
-/coverage
-
-# Production
-/build
-/dist
-
-# Misc
-.DS_Store
+# Environment variables
 .env
 .env.local
 .env.development.local
