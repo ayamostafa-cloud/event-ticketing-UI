@@ -16,6 +16,10 @@ import ForgetPassword from './pages/ForgetPassword'
 import ResetPassword from './pages/ResetPassword'
 import AdminEventList from './pages/admin/AdminEventList'
 import AdminUsers from './pages/admin/AdminUsers'
+import MyEvents from './pages/MyEvents'
+import CreateEvent from './pages/CreateEvent'
+import EditEvent from './pages/EditEvent'
+import EventAnalytics from './pages/EventAnalytics'
 //import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
@@ -65,6 +69,38 @@ function App() {
               element={
                 <ProtectedRoute>
                   <EditProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="my-events"
+              element={
+                <ProtectedRoute>
+                  <MyEvents />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="my-events/analytics"
+              element={
+                <ProtectedRoute>
+                  <EventAnalytics />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="events/new"
+              element={
+                <ProtectedRoute>
+                  <CreateEvent />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="events/:id/edit"
+              element={
+                <ProtectedRoute>
+                  <EditEvent />
                 </ProtectedRoute>
               }
             />
