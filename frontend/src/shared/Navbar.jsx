@@ -29,8 +29,8 @@ const Navbar = () => {
             case 'admin':
                 return (
                     <>
-                        <Link to="/users" className="text-gray-600 hover:text-gray-900">Users</Link>
-                        <Link to="/all-events" className="text-gray-600 hover:text-gray-900">All Events</Link>
+                        <Link to="admin/users" className="text-gray-600 hover:text-gray-900">Users</Link>
+                        <Link to="/admin/events" className="text-gray-600 hover:text-gray-900">All Events</Link>
                         <Link to="/profile" className="text-gray-600 hover:text-gray-900">My Profile</Link>
                         <span className="text-gray-600">Hi, {user.name}</span>
                         <button

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, hideViewDetails = false, showStatus = false }) => {
     const {
         _id,
         title,
@@ -38,7 +38,13 @@ const EventCard = ({ event }) => {
     }
 
     return (
-        <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 relative">
+            {/* Status Badge for Admin (top right) */}
+            {showStatus && (
+                <span className={`absolute top-4 right-4 px-3 py-1 text-sm font-semibold text-white rounded-full z-10 ${getStatusColor(status)}`}>
+                    {status ? status.charAt(0).toUpperCase() + status.slice(1) : 'Unknown'}
+                </span>
+            )}
             {/* Event Content */}
             <div className="p-6">
                 {/* Category */}
@@ -98,12 +104,14 @@ const EventCard = ({ event }) => {
                 </div>
 
                 {/* Action Button */}
-                <Link
-                    to={`/events/${_id}`}
-                    className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
-                >
-                    View Details
-                </Link>
+                {!hideViewDetails && (
+                    <Link
+                        to={`/events/${_id}`}
+                        className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                    >
+                        View Details
+                    </Link>
+                )}
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import api from '../services/api'
+import { useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext(null)
 
@@ -50,7 +51,10 @@ export const AuthProvider = ({ children }) => {
     const forgotPassword = async (email) => {
         try {
             await api.post('/forgetPassword', { email })
-            return { success: true }
+            return {
+                success: true,
+                redirect: '/reset-password'
+            }
         } catch (error) {
             return {
                 success: false,
@@ -59,9 +63,9 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    const resetPassword = async (email, otp, newPassword) => {
+    const resetPassword = async (otp, newPassword) => {
         try {
-            await api.put('/forgetPassword', { email, otp, newPassword })
+            await api.put('/forgetPassword', { otp, newPassword })
             return { success: true }
         } catch (error) {
             return {
