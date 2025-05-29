@@ -14,6 +14,8 @@ import Booking from './pages/Booking'
 import Bookings from './pages/Bookings'
 import ForgetPassword from './pages/ForgetPassword'
 import ResetPassword from './pages/ResetPassword'
+import AdminEventList from './pages/admin/AdminEventList'
+import AdminUsers from './pages/admin/AdminUsers'
 //import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
@@ -63,6 +65,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <EditProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admin/events"
+              element={
+                <ProtectedRoute>
+                  <AdminEventList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="admin/users"
+              element={
+                <ProtectedRoute>
+                  <AdminUsers />
                 </ProtectedRoute>
               }
             />
