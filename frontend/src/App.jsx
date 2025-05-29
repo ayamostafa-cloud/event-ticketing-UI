@@ -19,6 +19,7 @@ import AdminUsers from './pages/admin/AdminUsers'
 import MyEvents from './pages/MyEvents'
 import CreateEvent from './pages/CreateEvent'
 import EditEvent from './pages/EditEvent'
+import EventAnalytics from './pages/EventAnalytics'
 //import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
@@ -76,6 +77,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MyEvents />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="my-events/analytics"
+              element={
+                <ProtectedRoute>
+                  <EventAnalytics />
                 </ProtectedRoute>
               }
             />
