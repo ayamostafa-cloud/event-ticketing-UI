@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 
-const EventCard = ({ event, hideViewDetails = false, showStatus = false }) => {
+const EventCard = ({ event, hideViewDetails = false, showStatus = false, isEditMode = false }) => {
     const {
         _id,
         title,
@@ -106,10 +106,13 @@ const EventCard = ({ event, hideViewDetails = false, showStatus = false }) => {
                 {/* Action Button */}
                 {!hideViewDetails && (
                     <Link
-                        to={`/events/${_id}`}
-                        className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                        to={isEditMode ? `/events/${_id}/edit` : `/events/${_id}`}
+                        className={`block w-full text-center ${isEditMode
+                            ? 'bg-yellow-600 hover:bg-yellow-700'
+                            : 'bg-blue-600 hover:bg-blue-700'
+                            } text-white font-semibold py-2 px-4 rounded-lg transition duration-300`}
                     >
-                        View Details
+                        {isEditMode ? 'Edit Event' : 'View Details'}
                     </Link>
                 )}
             </div>
