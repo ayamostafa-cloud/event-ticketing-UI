@@ -12,6 +12,8 @@ import EventList from './pages/EventList'
 import EventDetails from './pages/EventDetails'
 import Booking from './pages/Booking'
 import Bookings from './pages/Bookings'
+import ForgetPassword from './pages/ForgetPassword'
+import ResetPassword from './pages/ResetPassword'
 //import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/" element={<MainLayout />}>
             <Route index element={<EventList />} />
