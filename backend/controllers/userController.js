@@ -9,7 +9,12 @@ const bcrypt = require("bcrypt");
 const userController = {
     register: async (req, res) => {
         try {
-            const { email, password, name, role } = req.body;
+            const { email, password, name, role = 'user' } = req.body;
+
+            // Validate required fields
+            if (!email || !password || !name) {
+                return res.status(400).json({ message: "All fields are required" });
+            }
 
             // Check if the user already exists
             const existingUser = await userModel.findOne({ email });

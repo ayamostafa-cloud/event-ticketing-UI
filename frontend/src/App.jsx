@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute'
 import EventList from './pages/EventList'
 import EventDetails from './pages/EventDetails'
 import Booking from './pages/Booking'
+import Bookings from './pages/Bookings'
 //import ForgotPassword from './components/auth/ForgotPassword'
 
 function App() {
@@ -36,6 +37,14 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<EventList />} />
             <Route path="events/:id" element={<EventDetails />} />
+            <Route
+              path="bookings"
+              element={
+                <ProtectedRoute>
+                  <Bookings />
+                </ProtectedRoute>
+              }
+            />
             <Route path="book-now" element={<Booking />} />
             <Route
               path="profile"
